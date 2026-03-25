@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { db } from '../db'
 import type { ExpenseReport } from '../types'
+import { db } from '../db'
 import { formatCurrency, formatMonth } from '../utils/formatters'
 import { generatePDF } from '../utils/pdf'
 
@@ -9,12 +9,12 @@ export default function HomePage() {
   const [reports, setReports] = useState<ExpenseReport[]>([])
   const navigate = useNavigate()
 
-  const load = async () => {
+  const load = useCallback(async () => {
     const all = await db.reports.orderBy('createdAt').reverse().toArray()
     setReports(all)
-  }
+  }, [])
 
-  useEffect(() => { load() }, [])
+  useEffect(() => { load() }, [load])
 
   const deleteReport = async (id: string) => {
     if (confirm('Supprimer cette note de frais ?')) {

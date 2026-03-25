@@ -108,7 +108,7 @@ export async function generatePDF(report: ExpenseReport): Promise<Uint8Array> {
 
   // Table rows
   let rowIndex = 0;
-  for (const [date, expenses] of grouped) {
+  for (const [_date, expenses] of grouped) {
     const dayTotal = expenses.reduce((sum, e) => sum + e.amount, 0);
     for (let i = 0; i < expenses.length; i++) {
       const expense = expenses[i];
@@ -145,9 +145,6 @@ export async function generatePDF(report: ExpenseReport): Promise<Uint8Array> {
       y -= rowHeight;
       rowIndex++;
     }
-    // suppress unused variable warning
-    void date;
-    void dayTotal;
   }
 
   // Total row

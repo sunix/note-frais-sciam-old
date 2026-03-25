@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { db } from '../db'
 import type { ExpenseReport } from '../types'
@@ -15,13 +15,13 @@ export default function ExpenseListPage() {
   const navigate = useNavigate()
   const [report, setReport] = useState<ExpenseReport | null>(null)
 
-  const load = async () => {
+  const load = useCallback(async () => {
     if (!id) return
     const r = await db.reports.get(id)
     setReport(r ?? null)
-  }
+  }, [id])
 
-  useEffect(() => { load() }, [id])
+  useEffect(() => { load() }, [load])
 
   const deleteExpense = async (expenseId: string) => {
     if (!report || !confirm('Supprimer cette dépense ?')) return
