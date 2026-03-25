@@ -1,57 +1,57 @@
 # Note de Frais
 
-Application web de gestion des notes de frais, conçue pour les consultants SCIAM.
+Web application for managing expense reports, designed for SCIAM consultants.
 
-🚀 **[Accéder à l'application déployée](https://sunix.github.io/note-frais-sciam-old/)**
+🚀 **[Open the deployed application](https://sunix.github.io/note-frais-sciam-old/)**
 
-## Fonctionnalités
+## Features
 
-- Créer et gérer des notes de frais par collaborateur et par mois
-- Ajouter des dépenses (déjeuner, petit déjeuner, dîner, collation, autres) avec justificatifs
-- Générer un PDF de la note de frais
-- Exporter / importer les données au format JSON
-- Application PWA installable, fonctionne hors ligne
-- Toutes les données sont stockées localement dans le navigateur (IndexedDB)
+- Create and manage expense reports per employee and per month
+- Add expenses (lunch, breakfast, dinner, snack, other) with receipts
+- Generate a PDF of the expense report
+- Export / import data as JSON
+- Installable PWA, works offline
+- All data is stored locally in the browser (IndexedDB)
 
-## Captures d'écran
+## Screenshots
 
-### Accueil — liste des notes de frais
+### Home — expense report list
 
-![Accueil avec une note de frais](https://github.com/user-attachments/assets/7e54c2db-7fe9-4e72-94f3-6e4fa1879d42)
+![Home page with an expense report](https://github.com/user-attachments/assets/7e54c2db-7fe9-4e72-94f3-6e4fa1879d42)
 
-### Créer une nouvelle note de frais
+### Create a new expense report
 
-![Formulaire de création d'une note de frais](https://github.com/user-attachments/assets/1b903b7d-232b-4c1d-85ce-d66ec5766ced)
+![New expense report form](https://github.com/user-attachments/assets/1b903b7d-232b-4c1d-85ce-d66ec5766ced)
 
-### Liste des dépenses
+### Expense list
 
-![Liste des dépenses d'une note](https://github.com/user-attachments/assets/18eac982-f6ec-48fd-b818-fe193eb6fbe1)
+![Expense list for a report](https://github.com/user-attachments/assets/18eac982-f6ec-48fd-b818-fe193eb6fbe1)
 
-### Ajouter une dépense
+### Add an expense
 
-![Formulaire d'ajout d'une dépense](https://github.com/user-attachments/assets/959e8fc3-892a-47b1-8c4a-20e4b23b36d2)
+![Add expense form](https://github.com/user-attachments/assets/959e8fc3-892a-47b1-8c4a-20e4b23b36d2)
 
-## Stack technique
+## Tech stack
 
 - [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/) + [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
 - [Dexie](https://dexie.org/) (IndexedDB)
-- [pdf-lib](https://pdf-lib.js.org/) pour la génération PDF
-- Déployé sur [GitHub Pages](https://pages.github.com/)
+- [pdf-lib](https://pdf-lib.js.org/) for PDF generation
+- Deployed on [GitHub Pages](https://pages.github.com/)
 
-## Développement local
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build & déploiement
+## Build & deployment
 
 ```bash
 npm run build
 ```
 
-Le déploiement sur GitHub Pages est automatique à chaque push sur `main` via GitHub Actions.
+Deployment to GitHub Pages is automated on every push to `main` via GitHub Actions.
