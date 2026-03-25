@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Note de Frais
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application web de gestion des notes de frais, conçue pour les consultants SCIAM.
 
-Currently, two official plugins are available:
+🚀 **[Accéder à l'application déployée](https://sunix.github.io/note-frais-sciam-old/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fonctionnalités
 
-## React Compiler
+- Créer et gérer des notes de frais par collaborateur et par mois
+- Ajouter des dépenses (déjeuner, petit déjeuner, dîner, collation, autres) avec justificatifs
+- Générer un PDF de la note de frais
+- Exporter / importer les données au format JSON
+- Application PWA installable, fonctionne hors ligne
+- Toutes les données sont stockées localement dans le navigateur (IndexedDB)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Captures d'écran
 
-## Expanding the ESLint configuration
+### Accueil — liste des notes de frais
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Accueil avec une note de frais](https://github.com/user-attachments/assets/7e54c2db-7fe9-4e72-94f3-6e4fa1879d42)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Créer une nouvelle note de frais
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![Formulaire de création d'une note de frais](https://github.com/user-attachments/assets/1b903b7d-232b-4c1d-85ce-d66ec5766ced)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Liste des dépenses
+
+![Liste des dépenses d'une note](https://github.com/user-attachments/assets/18eac982-f6ec-48fd-b818-fe193eb6fbe1)
+
+### Ajouter une dépense
+
+![Formulaire d'ajout d'une dépense](https://github.com/user-attachments/assets/959e8fc3-892a-47b1-8c4a-20e4b23b36d2)
+
+## Stack technique
+
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) + [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- [Dexie](https://dexie.org/) (IndexedDB)
+- [pdf-lib](https://pdf-lib.js.org/) pour la génération PDF
+- Déployé sur [GitHub Pages](https://pages.github.com/)
+
+## Développement local
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build & déploiement
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Le déploiement sur GitHub Pages est automatique à chaque push sur `main` via GitHub Actions.
