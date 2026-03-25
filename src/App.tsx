@@ -6,7 +6,7 @@ import ExpenseFormPage from './pages/ExpenseFormPage'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/note-frais-sciam-old">
       <div className="min-h-screen bg-gray-50">
         <Routes>
           <Route path="/" element={<HomePage />} />
