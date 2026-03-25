@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Note de Frais
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web application for managing expense reports, designed for SCIAM consultants.
 
-Currently, two official plugins are available:
+🚀 **[Open the deployed application](https://sunix.github.io/note-frais-sciam-old/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Create and manage expense reports per employee and per month
+- Add expenses (lunch, breakfast, dinner, snack, other) with receipts
+- Generate a PDF of the expense report
+- Export / import data as JSON
+- Installable PWA, works offline
+- All data is stored locally in the browser (IndexedDB)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshots
 
-## Expanding the ESLint configuration
+### Home — expense report list
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Home page with an expense report](https://github.com/user-attachments/assets/7e54c2db-7fe9-4e72-94f3-6e4fa1879d42)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Create a new expense report
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![New expense report form](https://github.com/user-attachments/assets/1b903b7d-232b-4c1d-85ce-d66ec5766ced)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Expense list
+
+![Expense list for a report](https://github.com/user-attachments/assets/18eac982-f6ec-48fd-b818-fe193eb6fbe1)
+
+### Add an expense
+
+![Add expense form](https://github.com/user-attachments/assets/959e8fc3-892a-47b1-8c4a-20e4b23b36d2)
+
+## Tech stack
+
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/) + [vite-plugin-pwa](https://vite-pwa-org.netlify.app/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- [Dexie](https://dexie.org/) (IndexedDB)
+- [pdf-lib](https://pdf-lib.js.org/) for PDF generation
+- Deployed on [GitHub Pages](https://pages.github.com/)
+
+## Local development
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build & deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Deployment to GitHub Pages is automated on every push to `main` via GitHub Actions.
