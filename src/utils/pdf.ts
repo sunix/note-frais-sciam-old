@@ -17,15 +17,20 @@ function dataUrlToUint8Array(dataUrl: string): Uint8Array {
   return bytes;
 }
 
+const PAGE_WIDTH = 595;
+const PAGE_HEIGHT = 842;
+const MARGIN = 40;
+const MAX_ESTABLISHMENT_CHARS = 22;
+
 export async function generatePDF(report: ExpenseReport): Promise<Uint8Array> {
   const pdfDoc = await PDFDocument.create();
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
   // Page dimensions (A4)
-  const pageWidth = 595;
-  const pageHeight = 842;
-  const margin = 40;
+  const pageWidth = PAGE_WIDTH;
+  const pageHeight = PAGE_HEIGHT;
+  const margin = MARGIN;
   const tableLeft = margin;
   const tableWidth = pageWidth - 2 * margin;
 
@@ -126,8 +131,8 @@ export async function generatePDF(report: ExpenseReport): Promise<Uint8Array> {
       const values = [
         expense.type,
         formatDate(expense.date),
-        expense.establishment.length > 22
-          ? expense.establishment.substring(0, 22) + '…'
+        expense.establishment.length > MAX_ESTABLISHMENT_CHARS
+          ? expense.establishment.substring(0, MAX_ESTABLISHMENT_CHARS) + '…'
           : expense.establishment,
         formatCurrency(expense.amount),
         isLast ? formatCurrency(dayTotal) : '',
